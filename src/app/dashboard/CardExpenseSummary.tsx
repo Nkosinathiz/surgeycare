@@ -111,7 +111,7 @@ const CardExpenseSummary = () => {
                   <p className="text-sm">
                     Average:{" "}
                     <span className="font-semibold">
-                      ${expenseSummary.totalExpenses.toFixed(2)}
+                      R{expenseSummary.totalExpenses.toFixed(2)}
                     </span>
                   </p>
                 </div>
