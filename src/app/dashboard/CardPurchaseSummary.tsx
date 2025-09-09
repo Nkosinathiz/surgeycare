@@ -11,11 +11,10 @@ import {
   YAxis,
 } from "recharts";
 
-
 const CardPurchaseSummary = () => {
   const { data, isLoading } = useGetDashboardMetricsQuery();
   const purchaseData = data?.purchaseSummary || [];
-   const lastDataPoint = purchaseData[purchaseData.length - 1] || null;
+  const lastDataPoint = purchaseData[purchaseData.length - 1] || null;
 
   return (
     <div className="flex flex-col justify-between row-span-2 xl:row-span-3 col-span-1 md:col-span-2 xl:col-span-1 bg-white shadow-md rounded-2xl">
@@ -39,9 +38,12 @@ const CardPurchaseSummary = () => {
               <div className="flex items-center">
                 <p className="text-2xl font-bold">
                   {lastDataPoint
-                    ? numeral(lastDataPoint.totalPurchased).format("$0.00a")
-                    : "0"}
+                    ? `R${numeral(lastDataPoint.totalPurchased).format(
+                        "0.00a"
+                      )}`
+                    : "R0"}
                 </p>
+
                 {lastDataPoint && (
                   <p
                     className={`text-sm ${
@@ -70,7 +72,7 @@ const CardPurchaseSummary = () => {
                 <YAxis tickLine={false} tick={false} axisLine={false} />
                 <Tooltip
                   formatter={(value: number) => [
-                    `$R{value.toLocaleString("en")}`,
+                    `R${value.toLocaleString("en")}`,
                   ]}
                   labelFormatter={(label) => {
                     const date = new Date(label);
